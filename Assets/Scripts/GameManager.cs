@@ -13,15 +13,28 @@ public class GameManager : MonoBehaviour
 		none = 3
 	}
 	
+	
+	
 	[SerializeField]
 	private Opciones seleccionDelJugador1 = Opciones.none;
 	[SerializeField]
 	private Opciones seleccionDelJugador2 = Opciones.none;
 	
-    void Update()
+	public int scoreP1 = 0;
+	public int scoreP2 = 0;
+	public Text miTexto1;
+	public Text miTexto2;
+	//
+	// Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
+	protected void Start()
 	{
-		if (Input.GetKeyDown(KeyCode.F))
-			Versus();
+		
+		
+	}
+	 void Update()
+	{
+	miTexto1.text = scoreP1.ToString();
+	miTexto2.text = scoreP2.ToString();
 	}
     
 	public void CaptureP1Input(int seleccion)
@@ -49,10 +62,12 @@ public class GameManager : MonoBehaviour
 			if (seleccionDelJugador2 == Opciones.papel)
 			{
 				Debug.Log("Ganó el jugador #2.");
+				scoreP2 = scoreP2+1;
 			}
 			if (seleccionDelJugador2 == Opciones.tijeras)
 			{
 				Debug.Log("Ganó el jugador #1.");
+				scoreP1 = scoreP1+1;
 			}
 		}
 		if (seleccionDelJugador1 == Opciones.papel)
@@ -60,10 +75,12 @@ public class GameManager : MonoBehaviour
 			if (seleccionDelJugador2 == Opciones.piedra)
 			{
 				Debug.Log("Ganó el jugador #1.");
+				scoreP1 = scoreP1+1;
 			}
 			if (seleccionDelJugador2 == Opciones.tijeras)
 			{
 				Debug.Log("Ganó el jugador #2.");
+				scoreP2 = scoreP2+1;
 			}
 		}
 		if (seleccionDelJugador1 == Opciones.tijeras)
@@ -71,10 +88,12 @@ public class GameManager : MonoBehaviour
 			if (seleccionDelJugador2 == Opciones.papel)
 			{
 				Debug.Log("Ganó el jugador #1.");
+				scoreP1 = scoreP1+1;
 			}
 			if (seleccionDelJugador2 == Opciones.piedra)
 			{
 				Debug.Log("Ganó el jugador #2.");
+				scoreP2 = scoreP2+1;
 			}
 		}
 		seleccionDelJugador1 = Opciones.none;
